@@ -18,7 +18,7 @@ st.write('---')
 st.image('BTC.jpg', use_column_width=True)
 
 #get data
-btc = read.csv('BTC-USD.csv')
+btc = pd.read_csv('BTC-USD.csv')
  
 # user input
 st.write('''# Choose Date and Amount''')
