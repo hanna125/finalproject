@@ -24,9 +24,17 @@ btc = pd.read_csv('BTC-USD.csv')
 st.write('''# Choose Date and Amount''')
 today = datetime.utcnow().date()
 previous_day = today - timedelta(days=1)
-HIST_DATE = st.date_input("Date: ", value=previous_day, min_value=datetime(2014,1,1), max_value=previous_day)
+HIST_DATE = st.date_input("Date: ", value=previous_day, min_value=datetime(2014,9,17), max_value=previous_day)
 ORG_USD = st.number_input("USD Amount: ", min_value=1, max_value=999999999)
 
 #date reformatting
 HIST_DATE_REFORMAT = HIST_DATE.strftime("%d-%m-%Y")
 HIST_DATE_datetime = datetime.strptime(HIST_DATE_REFORMAT,"%d-%m-%Y")
+
+btc_history = btc.loc[btc['Date'] == HIST_DATE_REFORMAT]
+
+st.write('''# Results''')
+st.write('''## Historic Analysis''')
+st.write("You would have originally bought: ***{:,.2f}*** BTC".format(round((ORG_USD/btc_history),5)))
+st.write("At a price of ***{:,.9f}*** per BTC".format(btc_history))
+st.write(" ")
