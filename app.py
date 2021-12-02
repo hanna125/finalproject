@@ -18,7 +18,7 @@ st.write('---')
 st.image('BTC.jpg', use_column_width=True)
 
 #get data
-btc = pd.read_csv('BTC-USD.csv')
+btc = pd.read_csv('BTC-USD.csv', parse_dates = ['Date'])
  
 # user input
 st.write('''# Choose Date and Amount''')
@@ -31,10 +31,20 @@ ORG_USD = st.number_input("USD Amount: ", min_value=1, max_value=999999999)
 HIST_DATE_REFORMAT = HIST_DATE.strftime("%d-%m-%Y")
 HIST_DATE_datetime = datetime.strptime(HIST_DATE_REFORMAT,"%d-%m-%Y")
 
-btc_history = btc.loc[btc['Date'] == HIST_DATE_REFORMAT]
+btc_today = btc.loc[btc['Date'] == today,'Close']
+btc_history = btc.loc[btc['Date'] == HIST_DATE,'Close']
 
 st.write('''# Results''')
 st.write('''## Historic Analysis''')
 st.write("You would have originally bought: ***{:,.2f}*** BTC".format(round((ORG_USD/btc_history),5)))
 st.write("At a price of ***{:,.9f}*** per BTC".format(btc_history))
 st.write(" ")
+
+st.write('''## Your Current Worth''')
+total_btc = ORG_USD/btc_history
+current_USD = total_btc * btc_today
+perc_change = (current_USD - ORG_USD)/(ORG_USD)*100
+usd_diff = current_USD - ORG_USD
+
+st.write("That is currently worth: ***${:,.2f}***".format(round(current_USD,2)))
+st.write("Which is a percentage change of ***{:,.2f}%***".format(round(perc_change, 2),))
