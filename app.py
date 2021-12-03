@@ -48,6 +48,7 @@ st.write("You would have originally bought:")
 st.write(total_btc[0])
 st.write("BTC")
 st.write(" ")
+st.write(" ")
 st.write("At a price of")
 st.write(btc_history[0])
 st.write("USD per BTC")
@@ -72,6 +73,9 @@ else:
 st.write(abs(round(usd_diff,2)))
 
 
-historical_prices = btc.loc[:,["Date","Close"]]
+historical_prices = btc.loc[:,["Date" > HIST_DATE_datetime,"Close"]]
 
+st.write(" ")
+st.write(" ")
+st.write("BTC price history from selected date to current:")
 st.line_chart(historical_prices.set_index('Date'))
