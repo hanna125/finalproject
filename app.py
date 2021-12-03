@@ -27,8 +27,10 @@ previous_day = today - timedelta(days=1)
 HIST_DATE = st.date_input("Date: ", value=previous_day, min_value=datetime(2014,9,17), max_value=previous_day)
 ORG_USD = st.number_input("USD Amount: ", min_value=1, max_value=999999999)
 
+HIST_DATE2 = HIST_DATE.strftime("%m/%d/%Y %H:%M:%S")
+HIST_DATE3 = HIST_DATE2.strptime(HIST_DATE2)
 st.write(today)
-st.write(HIST_DATE)
+st.write(HIST_DATE3)
 
 #date reformatting
 HIST_DATE_REFORMAT = HIST_DATE.strftime("%d-%m-%Y")
