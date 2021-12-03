@@ -25,10 +25,7 @@ st.write('''# Choose Date and Amount''')
 today = datetime(2021,12,1)
 previous_day = today - timedelta(days=1)
 HIST_DATE = st.date_input("Date: ", value=previous_day, min_value=datetime(2014,9,17), max_value=previous_day)
-HIST_DATE2 = datetime(HIST_DATE)
 ORG_USD = st.number_input("USD Amount: ", min_value=1, max_value=999999999)
-
-st.write(HIST_DATE2)
 
 #date reformatting
 HIST_DATE_REFORMAT = HIST_DATE.strftime("%d-%m-%Y")
