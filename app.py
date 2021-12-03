@@ -103,7 +103,7 @@ st.write(result)
 #end = len(train) + len(test) - 1
 
 #predictions = result.predict(start, end,
-                             typ = 'levels').rename("Predictions")
+#                             typ = 'levels').rename("Predictions")
 
 #predictions.plot(legend = True)
 #test['Close'].plot(legend = True)
