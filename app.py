@@ -10,12 +10,13 @@ st.write("""
 # Bitcoin Self Flagellation App
 
 This app is for those wannabe crypto bros (and sisses) who want to punish themselves by knowing how much $$ you could have 
-today if you had bought Bitcoin on a certain date. 
+today if you had bought Bitcoin on a certain date.  
 
 Select the following two inputs:
 - Date You Wish You Would Have Bought Bitcoin
 - USD Amount You Wish You Would Have Invested
-""")
+
+After you see what you could have missed out on, the app will show you an output of a ARIMA time series model""")
 st.write('---')
 
 st.image('BTC.jpg', use_column_width=True)
@@ -75,6 +76,8 @@ else:
    st.write('''# You Missed Out On''') 
 st.write(abs(round(usd_diff,2)))
 
+st.image('BTC2.jpg', use_column_width=True)
+
 historical_prices = btc.loc[btc['Date'] >= HIST_DATE_datetime,['Date','Close']]
 
 st.write(" ")
@@ -96,13 +99,13 @@ result = model.fit()
 result = result.summary()
 st.write(result)
 
-start = len(train)
-end = len(train) + len(test) - 1
+#start = len(train)
+#end = len(train) + len(test) - 1
 
-predictions = result.predict(start, end,
+#predictions = result.predict(start, end,
                              typ = 'levels').rename("Predictions")
 
-predictions.plot(legend = True)
-test['Close'].plot(legend = True)
+#predictions.plot(legend = True)
+#test['Close'].plot(legend = True)
 
 
