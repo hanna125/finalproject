@@ -27,16 +27,12 @@ previous_day = today - timedelta(days=1)
 HIST_DATE = st.date_input("Date: ", value=previous_day, min_value=datetime(2014,9,17), max_value=previous_day)
 ORG_USD = st.number_input("USD Amount: ", min_value=1, max_value=999999999)
 
-st.write(today)
-
 #date reformatting
 HIST_DATE_REFORMAT = HIST_DATE.strftime("%d-%m-%Y")
 HIST_DATE_datetime = datetime.strptime(HIST_DATE_REFORMAT,"%d-%m-%Y")
 
-st.write(HIST_DATE_datetime)
-
 btc_today = btc.loc[btc['Date'] == today,'Close']
-btc_history = btc.loc[btc['Date'] == HIST_DATE,'Close']
+btc_history = btc.loc[btc['Date'] == HIST_DATE_datetime,'Close']
 
 btc_today = btc_today.reset_index(drop = True)
 btc_history = btc_history.reset_index(drop = True)
