@@ -85,6 +85,13 @@ st.write(" ")
 st.write("BTC price history from selected date to current:")
 st.line_chart(historical_prices.set_index('Date'))
 
+st.write(" ")
+st.write(" ")
+st.write('---')
+st.write("Summary of ARIMA time series model: ")
+st.write(" ")
+st.write(" ")
+
 warnings.filterwarnings("ignore")
 btc2 = pd.read_csv('BTC-USD.csv', index_col = 'Date', parse_dates = ['Date'])
 
