@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import warnings
+from pmdarima import auto_arima
+from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 st.write("""
 # Bitcoin Self Flagellation App
@@ -79,3 +82,27 @@ st.write(" ")
 st.write(" ")
 st.write("BTC price history from selected date to current:")
 st.line_chart(historical_prices.set_index('Date'))
+
+warnings.filterwarnings("ignore")
+btc2 = pd.read_csv('BTC-USD.csv', index_col = 'Date', parse_dates = ['Date'])
+
+train = btc.iloc[:len(btc2)-365]
+test = btc.iloc[len(btc2)-365:]
+
+model = SARIMAX(train['Close'], 
+                order = (1, 1, 2),
+               seasonal_order =(2, 0, 2, 12))
+
+result = model.fit()
+result.summary()
+
+start = len(train)
+end = len(train) + len(test) - 1
+
+predictions = result.predict(start, end,
+                             typ = 'levels').rename("Predictions")
+
+predictions.plot(legend = True)
+test['Close'].plot(legend = True)
+
+
