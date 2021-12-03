@@ -76,7 +76,6 @@ else:
 st.write(abs(round(usd_diff,2)))
 
 historical_prices = btc.loc[btc['Date'] >= HIST_DATE_datetime,['Date','Close']]
-st.write(historical_prices)
 
 st.write(" ")
 st.write(" ")
@@ -94,7 +93,8 @@ model = SARIMAX(train['Close'],
                seasonal_order =(2, 0, 2, 12))
 
 result = model.fit()
-result.summary()
+result = result.summary()
+st.write(result)
 
 start = len(train)
 end = len(train) + len(test) - 1
