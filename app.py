@@ -37,6 +37,9 @@ btc_history = btc.loc[btc['Date'] == HIST_DATE,'Close']
 btc_today = btc_today.reset_index(drop = True)
 btc_history = btc_history.reset_index(drop = True)
 
+st.write(btc_today)
+st.write(btc_history)
+
 total_btc = ORG_USD/btc_history
 current_USD = total_btc[0] * btc_today[0]
 perc_change = (current_USD - ORG_USD)/(ORG_USD)*100
