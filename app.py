@@ -57,9 +57,11 @@ st.write('''## Your Current Worth''')
 
 st.write("That is currently worth:")
 st.write(round(current_USD,2))
+st.write("BTC")
 st.write(" ")
 st.write("Which is a percentage change of")
 st.write(round(perc_change, 2))
+
 
 if usd_diff == 0:
    st.write('''# You Broke Even''')
@@ -73,3 +75,4 @@ st.write(abs(round(usd_diff,2)))
 historical_prices = btc.loc[:,["Date","Close"]]
 
 historical_prices.set_index('Date').plot()
+st.set_option('deprecation.showPyplotGlobalUse', False)
