@@ -68,3 +68,8 @@ elif usd_diff <= 0:
 else:
    st.write('''# You Missed Out On''') 
 st.write(abs(round(usd_diff,2)))
+
+
+historical_prices = btc.loc[:,["Date","Close"]]
+
+st.line_chart(historical_prices)
