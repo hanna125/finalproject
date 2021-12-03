@@ -72,4 +72,4 @@ st.write(abs(round(usd_diff,2)))
 
 historical_prices = btc.loc[:,["Date","Close"]]
 
-st.write(historical_prices.set_index('Date').plot())
+historical_prices.set_index('Date').plot()
