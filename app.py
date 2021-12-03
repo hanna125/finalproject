@@ -74,5 +74,4 @@ st.write(abs(round(usd_diff,2)))
 
 historical_prices = btc.loc[:,["Date","Close"]]
 
-historical_prices = historical_prices.set_index('Date')
-st.pyplot(historical_prices)
+st.line_chart(historical_prices.rename(columns={'date':'index'}).set_index('index'))
