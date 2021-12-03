@@ -72,7 +72,7 @@ else:
    st.write('''# You Missed Out On''') 
 st.write(abs(round(usd_diff,2)))
 
-historical_prices = btc.loc[btc['Date'] >= HIST_DATE,['Date','Close']]
+historical_prices = btc.loc[btc['Date'] >= HIST_DATE_datetime,['Date','Close']]
 st.write(historical_prices)
 
 st.write(" ")
