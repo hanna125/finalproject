@@ -6,6 +6,7 @@ import warnings
 from pmdarima import auto_arima
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from pylab import rcParams
+import statsmodels.api as sm
 
 st.write("""
 # Bitcoin Self Flagellation App
