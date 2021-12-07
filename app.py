@@ -95,38 +95,34 @@ st.write("Summary of ARIMA time series model: ")
 st.write(" ")
 st.write(" ")
 
-#warnings.filterwarnings("ignore")
-#btc2 = pd.read_csv('BTC-USD.csv', index_col = 'Date', parse_dates = ['Date'])
+warnings.filterwarnings("ignore")
+btc2 = pd.read_csv('BTC-USD.csv', index_col = 'Date', parse_dates = ['Date'])
+train = btc.iloc[:len(btc2)-365]
+test = btc.iloc[len(btc2)-365:]
+model = SARIMAX(train['Close'], 
+                order = (1, 1, 2),
+               seasonal_order =(2, 0, 2, 12))
+result = model.fit()
+result = result.summary()
+st.write(result)
+model2 = sm.tsa.statespace.SARIMAX(train, order = (1, 1, 2), seasonal_order = (1,1,0,12), enforce_stationarity = False, enforce_invertibility=False)
+forecast2 = results.get_prediction(start=pd.to_datetime('2019-12-03'), dynamic = False) 
+pred_ci = forecast2.conf_int()
 
-#train = btc.iloc[:len(btc2)-365]
-#test = btc.iloc[len(btc2)-365:]
+ax = train['2014-12-06':].plot(label='observed')
+forecast2.predicted_mean.plot(ax=ax, label='One-step ahead Forecast', alpha=.7, figsize=(14, 7))
+ax.fill_between(pred_ci.index,
+                pred_ci.iloc[:, 0],
+                pred_ci.iloc[:, 1], color='k', alpha=.2)
+ax.set_xlabel('Date')
+ax.set_ylabel('BTC Close Price')
+fig, ax = plt.subplots()
+plt.legend()
+plt.show()
+st.pyplot(fig)
 
-#model = SARIMAX(train['Close'], 
-#                order = (1, 1, 2),
-#               seasonal_order =(2, 0, 2, 12))
-
-#result = model.fit()
-#result = result.summary()
-#st.write(result)
-
-#model2 = sm.tsa.statespace.SARIMAX(train, order = (1, 1, 2), seasonal_order = (1,1,0,12), enforce_stationarity = False, enforce_invertibility=False)
-#forecast2 = results.get_prediction(start=pd.to_datetime('2019-12-03'), dynamic = False) 
-#pred_ci = forecast2.conf_int()
-#
-#ax = train['2014-12-06':].plot(label='observed')
-#forecast2.predicted_mean.plot(ax=ax, label='One-step ahead Forecast', alpha=.7, figsize=(14, 7))
-#ax.fill_between(pred_ci.index,
-#                pred_ci.iloc[:, 0],
-#                pred_ci.iloc[:, 1], color='k', alpha=.2)
-#ax.set_xlabel('Date')
-#ax.set_ylabel('BTC Close Price')
-#fig, ax = plt.subplots()
-#plt.legend()
-#plt.show()
-#st.pyplot(fig)
-
-## Facebook Prophet forecasting
-## Re-import BTC data and rename columns to ds and y to comply with Prophet
+# Facebook Prophet forecasting
+# Re-import BTC data and rename columns to ds and y to comply with Prophet
 btc = pd.read_csv('C:/Users/A4665ZZ/Documents/MSBA Business Analytics/MABA 6490 Machine Learning/Final Project/BTC-USD.csv', parse_dates = ['Date'])
 btc = pd.DataFrame(btc)
 btc = btc.rename(columns={'Date':'ds', 'Close':'y'})
