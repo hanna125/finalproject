@@ -21,7 +21,7 @@ Select the following two inputs:
 - Date You Wish You Would Have Bought Bitcoin
 - USD Amount You Wish You Would Have Invested
 
-After you see what you could have missed out on, the app will show you an output of a ARIMA time series model""")
+After you see what you could have missed out on, the app will show you an output of a Facebook Prophet forecast and ARIMA time series model""")
 st.write('---')
 
 st.image('BTC.jpg', use_column_width=True)
@@ -81,6 +81,7 @@ elif usd_diff <= 0:
 else:
    st.write('''# You Missed Out On''') 
 st.write(abs(round(usd_diff,2)))
+st.write(''USD'') 
 
 st.image('BTC2.jpg', use_column_width=True)
 
@@ -89,7 +90,7 @@ historical_prices = btc.loc[btc['Date'] >= HIST_DATE_datetime,['Date','Close']]
 st.write(" ")
 st.write(" ")
 st.write("BTC price history from selected date to current:")
-st.line_chart(historical_prices.set_index('Date'))
+st.line_chart(historical_prices.set_index('Date'),ylabel='BTC Close Price')
 
 st.write(" ")
 st.write(" ")
