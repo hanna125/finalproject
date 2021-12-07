@@ -105,21 +105,21 @@ model = SARIMAX(train['Close'],
 result = model.fit()
 result = result.summary()
 st.write(result)
-model2 = sm.tsa.statespace.SARIMAX(train, order = (1, 1, 2), seasonal_order = (1,1,0,12), enforce_stationarity = False, enforce_invertibility=False)
-forecast2 = results.get_prediction(start=pd.to_datetime('2019-12-03'), dynamic = False) 
-pred_ci = forecast2.conf_int()
-
-ax = train['2014-12-06':].plot(label='observed')
-forecast2.predicted_mean.plot(ax=ax, label='One-step ahead Forecast', alpha=.7, figsize=(14, 7))
-ax.fill_between(pred_ci.index,
-                pred_ci.iloc[:, 0],
-                pred_ci.iloc[:, 1], color='k', alpha=.2)
-ax.set_xlabel('Date')
-ax.set_ylabel('BTC Close Price')
-fig, ax = plt.subplots()
-plt.legend()
-plt.show()
-st.pyplot(fig)
+#model2 = sm.tsa.statespace.SARIMAX(train, order = (1, 1, 2), seasonal_order = (1,1,0,12), enforce_stationarity = False, enforce_invertibility=False)
+#forecast2 = results.get_prediction(start=pd.to_datetime('2019-12-03'), dynamic = False) 
+#pred_ci = forecast2.conf_int()
+#
+#ax = train['2014-12-06':].plot(label='observed')
+#forecast2.predicted_mean.plot(ax=ax, label='One-step ahead Forecast', alpha=.7, figsize=(14, 7))
+#ax.fill_between(pred_ci.index,
+#                pred_ci.iloc[:, 0],
+#                pred_ci.iloc[:, 1], color='k', alpha=.2)
+#ax.set_xlabel('Date')
+#ax.set_ylabel('BTC Close Price')
+#fig, ax = plt.subplots()
+#plt.legend()
+#plt.show()
+#st.pyplot(fig)
 
 # Facebook Prophet forecasting
 # Re-import BTC data and rename columns to ds and y to comply with Prophet
