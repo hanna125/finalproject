@@ -9,10 +9,6 @@ from pylab import rcParams
 import statsmodels.api as sm
 from fbprophet import Prophet
 
-[theme]
-base="light"
-primaryColor="#64ff4b"
-secondaryBackgroundColor="#f1f6f0"
 
 
 st.write("""
