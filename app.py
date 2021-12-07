@@ -133,4 +133,4 @@ m.fit(btc)
 future = m.make_future_dataframe(periods=365)
 forecast = m.predict(future)
 fig1 = m.plot(forecast)
-
+st.pyplot(fig1)
