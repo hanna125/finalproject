@@ -121,6 +121,10 @@ st.write(result)
 #plt.show()
 #st.pyplot(fig)
 
+st.write('---')
+st.write(" ")
+st.write(" ")
+st.write("Time series forecast of next year BTC close price with range based on Facebook Prophet modeling:")
 # Facebook Prophet forecasting
 # Re-import BTC data and rename columns to ds and y to comply with Prophet
 btc = pd.read_csv('C:/Users/A4665ZZ/Documents/MSBA Business Analytics/MABA 6490 Machine Learning/Final Project/BTC-USD.csv', parse_dates = ['Date'])
@@ -132,5 +136,13 @@ m.fit(btc)
 
 future = m.make_future_dataframe(periods=365)
 forecast = m.predict(future)
-fig1 = m.plot(forecast)
+fig1 = m.plot(forecast,xlabel='Year', ylabel='BTC Close Price')
 st.pyplot(fig1)
+
+st.write('---')
+st.write(" ")
+st.write(" ")
+
+st.write("Deeper analysis:")
+fig2 = m.plot_components(forecast)
+st.pyplot(fig2)
