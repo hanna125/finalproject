@@ -81,7 +81,7 @@ elif usd_diff <= 0:
 else:
    st.write('''# You Missed Out On''') 
 st.write(abs(round(usd_diff,2)))
-st.write(''USD'') 
+st.write("USD") 
 
 st.image('BTC2.jpg', use_column_width=True)
 
