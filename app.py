@@ -90,7 +90,7 @@ historical_prices = btc.loc[btc['Date'] >= HIST_DATE_datetime,['Date','Close']]
 st.write(" ")
 st.write(" ")
 st.write("BTC price history from selected date to current:")
-st.line_chart(historical_prices.set_index('Date'),ylabel='BTC Close Price')
+st.line_chart(historical_prices.set_index('Date'))
 
 st.write(" ")
 st.write(" ")
