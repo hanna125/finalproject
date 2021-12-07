@@ -143,6 +143,7 @@ st.header("Summary of ARIMA time series model: ")
 st.write(" ")
 st.write(" ")
 
+btc = pd.read_csv('BTC-USD.csv', parse_dates = ['Date'])
 warnings.filterwarnings("ignore")
 btc2 = pd.read_csv('BTC-USD.csv', index_col = 'Date', parse_dates = ['Date'])
 train = btc.iloc[:len(btc2)-365]
