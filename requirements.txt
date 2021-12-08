@@ -4,6 +4,6 @@ regex==2021.8.3
 sklearn==0.0
 datetime
 matplotlib
-pystan
-fbprophet
+pystan==2.19.1.1
+fbprophet==0.2
 #pylab
