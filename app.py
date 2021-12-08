@@ -100,7 +100,7 @@ st.write(" ")
 st.write("Time series forecast of next year BTC close price with range:")
 # Facebook Prophet forecasting
 # Re-import BTC data and rename columns to ds and y to comply with Prophet
-btc = pd.read_csv('C:/Users/A4665ZZ/Documents/MSBA Business Analytics/MABA 6490 Machine Learning/Final Project/BTC-USD.csv', parse_dates = ['Date'])
+btc = pd.read_csv('BTC-USD.csv', parse_dates = ['Date'])
 btc = pd.DataFrame(btc)
 btc = btc.rename(columns={'Date':'ds', 'Close':'y'})
 
