@@ -14,7 +14,7 @@ from fbprophet import Prophet
 st.write("""
 # Bitcoin Self Flagellation App
 
-This app is for those wannabe crypto bros (and sisses) who want to punish themselves by knowing how much $$ you could have 
+This app is for those wannabe crypto millionaires who want to punish themselves by knowing how much $$ you could have 
 today if you had bought Bitcoin on a certain date.  
 
 Select the following two inputs:
