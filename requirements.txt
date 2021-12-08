@@ -5,4 +5,4 @@ sklearn==0.0
 datetime
 matplotlib
 fbprophet
-pylab
+#pylab
