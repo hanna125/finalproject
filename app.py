@@ -68,7 +68,7 @@ st.write('''## Your Current Worth''')
 
 st.write("That is currently worth:")
 st.write(round(current_USD,2))
-st.write("BTC")
+st.write("USD")
 st.write(" ")
 st.write("Which is a percentage change of")
 st.write(round(perc_change, 2))
